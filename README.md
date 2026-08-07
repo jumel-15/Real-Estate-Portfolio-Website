@@ -1,36 +1,164 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Emilia Estates — Luxury Real Estate Landing Page
 
-## Getting Started
+A polished, fully responsive single-page real estate website built with **Next.js (App Router)**, **React**, and **Tailwind CSS**. Built as a frontend portfolio project — there is **no database, authentication, CMS, or backend**. Everything is static, local, and works offline.
 
-First, run the development server:
+## ✨ Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Realshed-inspired design** — green `#2dbe6c` accent, Rubik typeface, dark utility topbar, hero search widget, dark navy footer
+- **Fully responsive & touch-friendly** — mobile, tablet, and desktop layouts with comfortable tap targets and a visible keyboard-focus ring
+- **Mobile navigation menu** — accessible hamburger toggle
+- **Smooth scrolling** — native `scroll-behavior: smooth` with navbar offset
+- **Fade-in on scroll** — lightweight `IntersectionObserver` `<Reveal />` component (no animation library)
+- **Working demo contact form** — client-side validation + success state in React (no backend)
+- **Testimonials, why-choose-us & team sections** — client testimonial carousel, reasons-to-choose panel with counters, and a 4-agent team grid
+- **Optimized images** — `next/image` with responsive `srcset`, local SVG placeholders so nothing requires internet
+- **Semantic HTML & accessibility** — ARIA labels, `role="alert"`/`role="status"` regions, `sr-only` labels, keyboard focus styles, `prefers-reduced-motion` support
+
+## 🧱 Tech Stack
+
+| Layer      | Technology                                              |
+| ---------- | ------------------------------------------------------- |
+| Framework  | [Next.js](https://nextjs.org) 16 (App Router)           |
+| UI         | React 19                                                 |
+| Styling    | Tailwind CSS v4 (CSS-first config via `@theme`)          |
+| Fonts      | `next/font` (Rubik, self-hosted)                          |
+| Language   | JavaScript (JSX)                                         |
+| Icons      | Custom inline SVG components (no icon library)           |
+
+## 📁 Project Structure
+
+```
+real_estate_project/
+├── app/
+│   ├── layout.js          # Root layout — fonts, metadata, global styles
+│   ├── page.js            # Home page — assembles all sections
+│   ├── globals.css        # Tailwind import, design tokens, buttons, reveal animation
+│   └── icon.svg           # Favicon (Next.js serves it automatically)
+├── components/
+│   ├── Navbar.jsx         # Sticky header: dark utility bar + nav + mobile menu
+│   ├── Hero.jsx           # Full-bleed hero with search widget
+│   ├── PropertySearch.jsx # BUY/RENT tabbed search widget (demo only)
+│   ├── PropertyCard.jsx   # Reusable listing card
+│   ├── FeaturedProperties.jsx  # 3-card grid
+│   ├── About.jsx          # Description + feature checklist
+│   ├── Amenities.jsx      # Icons + labels grid
+│   ├── WhyChooseUs.jsx    # "Reasons to choose us" panel + stat counters
+│   ├── Testimonials.jsx   # Client testimonial carousel
+│   ├── Location.jsx       # Map placeholder + nearby landmarks
+│   ├── Agent.jsx          # Team grid — agent cards with social overlay
+│   ├── ContactForm.jsx    # Front-end inquiry form (React state)
+│   ├── BackToTop.jsx      # Floating "back to top" button
+│   ├── Footer.jsx         # Dark navy footer — nav, contact, socials
+│   ├── Reveal.jsx         # Scroll-reveal wrapper (IntersectionObserver)
+│   ├── SectionHeading.jsx # Consistent kicker + title + lead
+│   ├── icons.jsx          # Inline SVG icon set
+│   └── data.js            # ✏️ All site content (edit this to customize)
+└── public/images/         # Local SVG placeholder images
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Getting Started
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### Prerequisites
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- [Node.js](https://nodejs.org) **18.18+** (this project was built with Node 24)
+- npm (ships with Node)
 
-## Learn More
+### Run locally
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+# 1. Install dependencies
+npm install
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# 2. Start the development server
+npm run dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-## Deploy on Vercel
+> `next/font` downloads Rubik **once at build/install time** and self-hosts it — the browser makes no request to Google Fonts.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Other commands
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run lint   # ESLint
+npm run build  # Production build (outputs a static `/.next` build)
+npm run start  # Serve the production build locally
+```
+
+## ✏️ Customizing the Content
+
+Almost all copy lives in **[components/data.js](components/data.js)**:
+
+- **Site & brand** — `site` (name, phone, email, address)
+- **Navigation** — `navLinks`
+- **Search widget** — `searchOptions` (locations & property types for the hero dropdowns)
+- **Listings** — `properties` (add/remove cards, change prices/stats)
+- **Amenities** — `amenities` (icons keys map in `components/Amenities.jsx`)
+- **Why choose us** — `whyChooseUs` + `whyChooseStats` (icon cards + counters)
+- **Testimonials** — `testimonials` (name, role, initials, quote)
+- **Landmarks** — `landmarks`
+- **Agents** — `agents` (team grid: name, role, phone, portrait)
+
+**Swapping placeholder images:** replace the SVGs in `public/images/` with your own JPEG/PNG files (keep the same filenames, or update the paths in `data.js` / the component `src` attributes).
+
+**Real map:** in `components/Location.jsx`, replace the `<Image />` map placeholder with a Google Maps / OpenStreetMap `<iframe>` embed of the address you want.
+
+**Contact form:** the form is intentionally front-end only. To capture real leads, point `handleSubmit` in `components/ContactForm.jsx` at a form service such as [Formspree](https://formspree.io) or [Basin](https://usebasin.com), or a small Next.js Route Handler.
+
+## 🌐 Deploying to Vercel
+
+This is a standard Next.js app, so deployment is one click.
+
+### Option A — Deploy from the dashboard
+
+1. Push this folder to a GitHub, GitLab, or Bitbucket repository.
+2. Go to [vercel.com/new](https://vercel.com/new) and import the repository.
+3. Vercel auto-detects **Next.js** — leave the defaults and click **Deploy**.
+4. Your site is live at `https://<project>.vercel.app`.
+
+### Option B — Deploy with the Vercel CLI
+
+```bash
+# 1. Install the CLI globally
+npm i -g vercel
+
+# 2. From the project folder, log in and deploy
+vercel
+
+# 3. Once you're happy, promote to production
+vercel --prod
+```
+
+### After deploying
+
+- Rename the project / set a custom domain under **Settings → Domains**.
+- Re-run `vercel --prod` (or push to your repo) whenever you change content.
+
+## 🎨 Design Tokens
+
+Custom colors are defined in `app/globals.css` under `@theme` and compile to Tailwind utilities:
+
+| Token              | Value      | Used for                        |
+| ------------------ | ---------- | ------------------------------- |
+| `primary`          | `#2dbe6c`  | Buttons, accents, hover states  |
+| `primary-dark`     | `#239f5b`  | Primary hover fill              |
+| `primary-soft`     | `#e5f8ed`  | Light green section backgrounds |
+| `ink`              | `#2d2929`  | Main body text                  |
+| `charcoal`         | `#1b1d21`  | Darkest / hover fills           |
+| `navy`             | `#0f172b`  | Footer + utility bar            |
+| `muted`            | `#93959e`  | Secondary text                  |
+| `line`             | `#e5e7ec`  | Borders & dividers              |
+| `soft`             | `#f7f9fc`  | Light section backgrounds       |
+| `sale`             | `#f94c4c`  | Sale / error accents            |
+| `star`             | `#f2b241`  | Ratings                         |
+
+Try tweaking a value and the entire site updates — utilities like `text-primary` or `bg-navy` are generated from these tokens.
+
+## 🙌 Credits
+
+- **Designed & built by Jumel Fernandez** — the layout takes design cues from the [Realshed](https://azim.commonsupport.com/Realshed/index.html) real estate template.
+- All property names, people, testimonials, and prices are fictional.
+
+## 📄 License
+
+Free to use for your portfolio. The property names, people, and prices are fictional.

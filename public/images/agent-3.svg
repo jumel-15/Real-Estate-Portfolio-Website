@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 720" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Portrait of a real estate agent">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#efeae3"/>
+      <stop offset="100%" stop-color="#e2dcd4"/>
+    </linearGradient>
+    <radialGradient id="halo" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#c96f4a" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#c96f4a" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="600" height="720" fill="url(#bg)"/>
+
+  <!-- Soft terracotta halo -->
+  <circle cx="300" cy="330" r="280" fill="url(#halo)"/>
+
+  <!-- Thin decorative terracotta ring -->
+  <circle cx="300" cy="330" r="150" fill="none" stroke="#c96f4a" stroke-width="1.5" opacity="0.55"/>
+
+  <!-- Person silhouette -->
+  <g fill="#2a2a30">
+    <!-- shoulders / torso -->
+    <path d="M300 470 C 372 470 414 518 420 720 L 180 720 C 186 518 228 470 300 470 Z"/>
+    <!-- collar highlight -->
+    <path d="M300 498 L 270 560 L 330 560 Z" fill="#c96f4a" opacity="0.85"/>
+  </g>
+  <!-- head -->
+  <ellipse cx="300" cy="352" rx="86" ry="102" fill="#1d1d22"/>
+
+  <!-- Subtle grain dots -->
+  <g fill="#2a2a30" opacity="0.08">
+    <circle cx="120" cy="180" r="3"/>
+    <circle cx="480" cy="140" r="4"/>
+    <circle cx="520" cy="420" r="3"/>
+    <circle cx="90" cy="480" r="4"/>
+    <circle cx="470" cy="620" r="3"/>
+    <circle cx="140" cy="640" r="4"/>
+  </g>
+</svg>

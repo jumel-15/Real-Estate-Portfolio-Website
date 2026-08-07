@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Beachfront condominium beside the ocean">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#bcd7df"/>
+      <stop offset="55%" stop-color="#e8e3cf"/>
+      <stop offset="100%" stop-color="#f3c98b"/>
+    </linearGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5fa8ad"/>
+      <stop offset="100%" stop-color="#2f7d8a"/>
+    </linearGradient>
+    <linearGradient id="sand" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#e9d5ac"/>
+      <stop offset="100%" stop-color="#d9bd8c"/>
+    </linearGradient>
+    <linearGradient id="building" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f6f3ea"/>
+      <stop offset="100%" stop-color="#d8d4c8"/>
+    </linearGradient>
+    <pattern id="balcony" width="46" height="54" patternUnits="userSpaceOnUse">
+      <rect x="4" y="6" width="38" height="30" rx="2" fill="#2f7d8a" opacity="0.75"/>
+    </pattern>
+  </defs>
+
+  <rect width="800" height="600" fill="url(#sky)"/>
+
+  <!-- Sun -->
+  <circle cx="640" cy="140" r="60" fill="#ffe9b8" opacity="0.9"/>
+
+  <!-- Distant ocean horizon line -->
+  <rect y="330" width="800" height="6" fill="#cde6e0"/>
+
+  <!-- Sea -->
+  <rect y="336" width="800" height="120" fill="url(#sea)"/>
+  <g stroke="#ffffff" stroke-width="2" opacity="0.2">
+    <line x1="80" y1="380" x2="220" y2="380"/>
+    <line x1="420" y1="400" x2="540" y2="400"/>
+    <line x1="620" y1="380" x2="740" y2="380"/>
+  </g>
+
+  <!-- Palm tree -->
+  <g>
+    <rect x="118" y="330" width="14" height="150" rx="7" fill="#8a6a4a"/>
+    <path d="M125 336 C 90 300 60 316 52 344 C 84 340 110 348 125 360 Z" fill="#3f7d5a"/>
+    <path d="M125 336 C 160 300 190 316 198 344 C 166 340 140 348 125 360 Z" fill="#4c9068"/>
+    <path d="M125 340 C 95 320 78 340 80 366 C 104 358 118 362 125 372 Z" fill="#35694c"/>
+    <path d="M125 340 C 155 320 172 340 170 366 C 146 358 132 362 125 372 Z" fill="#46815c"/>
+  </g>
+
+  <!-- Condo building -->
+  <g>
+    <rect x="360" y="180" width="300" height="300" fill="url(#building)"/>
+    <rect x="360" y="180" width="300" height="300" fill="url(#balcony)" opacity="0.9"/>
+    <rect x="354" y="176" width="312" height="10" rx="3" fill="#c8c3b4"/>
+    <rect x="470" y="250" width="80" height="120" rx="4" fill="#5d7f9a"/>
+    <!-- roof terrace -->
+    <rect x="420" y="150" width="180" height="30" fill="#e0dccc"/>
+    <rect x="500" y="132" width="24" height="18" fill="#c8c3b4"/>
+    <!-- lobby -->
+    <rect x="470" y="430" width="80" height="50" rx="4" fill="#4a7a86"/>
+  </g>
+
+  <!-- Sand -->
+  <rect y="456" width="800" height="144" fill="url(#sand)"/>
+  <ellipse cx="180" cy="540" rx="200" ry="36" fill="#ffffff" opacity="0.18"/>
+</svg>

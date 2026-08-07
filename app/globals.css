@@ -1,26 +1,183 @@
+/* ---------------------------------------------------------------------------
+   Emilia Estates — Global styles (Realshed-inspired design system)
+   Design tokens are defined with Tailwind v4's `@theme` so they become
+   first-class utilities (e.g. `bg-primary`, `text-ink`, `bg-navy`).
+--------------------------------------------------------------------------- */
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* --- Brand palette (inspired by the Realshed template) ----------------- */
+  /* Primary green accent */
+  --color-primary: #2dbe6c;
+  --color-primary-dark: #239f5b;
+  --color-primary-soft: #e5f8ed; /* light green section backgrounds */
+
+  /* Sale / badges */
+  --color-sale: #f94c4c;
+  --color-star: #f2b241;
+
+  /* Neutrals */
+  --color-ink: #2d2929; /* main body text */
+  --color-charcoal: #1b1d21; /* darkest / hover fills */
+  --color-navy: #0f172b; /* dark footer + CTA */
+  --color-muted: #93959e; /* secondary text */
+  --color-line: #e5e7ec; /* borders & dividers */
+  --color-soft: #f7f9fc; /* light section backgrounds */
+
+  /* --- Typography -------------------------------------------------------- */
+  --font-sans: var(--font-rubik), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ---------------------------------------------------------------------------
+   Base layer
+--------------------------------------------------------------------------- */
+html {
+  scroll-behavior: smooth;
+  /* Never show a horizontal scrollbar on small devices (clip, not hidden,
+     so position: sticky still works) */
+  overflow-x: clip;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  @apply bg-white font-sans text-ink antialiased;
+}
+
+/* Offset anchored sections by the height of the sticky header
+   (utility bar + nav on desktop) */
+section[id],
+footer[id] {
+  scroll-margin-top: 7.5rem;
+}
+
+::selection {
+  background-color: var(--color-primary);
+  color: #ffffff;
+}
+
+/* Visible keyboard focus — consistent green ring everywhere */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+/* ---------------------------------------------------------------------------
+   Component classes
+--------------------------------------------------------------------------- */
+@layer components {
+  /* Primary green button with the dark "sweep" hover (Realshed theme-btn) */
+  .btn-primary {
+    @apply relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-[5px] px-8 py-4 text-[17px] font-medium text-white shadow-[0_10px_30px_rgba(0,0,0,0.1)] transition-all duration-500;
+    background-color: var(--color-primary);
+  }
+
+  .btn-primary::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 0%;
+    background-color: var(--color-charcoal);
+    transition: width 0.5s ease;
+    z-index: -1;
+  }
+
+  .btn-primary:hover::before {
+    width: 100%;
+  }
+
+  .btn-primary:hover {
+    color: #ffffff;
+    transform: translateY(-2px);
+  }
+
+  /* Ghost button on light backgrounds */
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-[5px] border border-line px-8 py-4 text-[17px] font-medium text-muted transition-colors duration-300 hover:border-charcoal hover:bg-charcoal hover:text-white;
+  }
+
+  /* White button for dark sections */
+  .btn-light {
+    @apply inline-flex items-center justify-center gap-2 rounded-[5px] bg-white px-8 py-4 text-[17px] font-medium text-charcoal shadow-[0_10px_30px_rgba(0,0,0,0.1)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-primary hover:text-white;
+  }
+
+  /* Ghost button on dark backgrounds */
+  .btn-outline-light {
+    @apply inline-flex items-center justify-center gap-2 rounded-[5px] border border-white/40 px-8 py-4 text-[17px] font-medium text-white transition-all duration-300 hover:border-white hover:bg-white hover:text-charcoal;
+  }
+
+  /* Section kicker — green uppercase label above titles */
+  .kicker {
+    @apply text-[18px] font-medium uppercase leading-6 text-primary;
+  }
+
+  /* Simple labeled form field */
+  .field {
+    @apply w-full rounded-[5px] border border-line bg-white px-4 py-3.5 text-[15px] text-ink transition-colors duration-200 placeholder:text-muted focus:border-primary focus:outline-none;
+  }
+
+  .field-label {
+    @apply mb-2 block text-[15px] font-medium text-ink;
+  }
+
+  /* Select used inside the hero search widget */
+  .select-field {
+    @apply w-full cursor-pointer appearance-none rounded-[5px] border border-line bg-white px-4 py-3.5 text-[15px] text-ink transition-colors duration-200 focus:border-primary focus:outline-none;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Reveal-on-scroll animation
+   Used by the <Reveal /> component: elements start hidden and fade + slide
+   in the first time they intersect the viewport.
+--------------------------------------------------------------------------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Subtle pulsing scroll indicator on the hero */
+@keyframes scroll-hint {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.9;
+  }
+  50% {
+    transform: translateY(8px);
+    opacity: 0.4;
+  }
+}
+
+.animate-scroll-hint {
+  animation: scroll-hint 2.2s ease-in-out infinite;
+}
+
+/* ---------------------------------------------------------------------------
+   Accessibility — respect users who prefer reduced motion
+--------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .animate-scroll-hint {
+    animation: none;
+  }
 }

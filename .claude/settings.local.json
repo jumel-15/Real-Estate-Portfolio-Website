@@ -2,7 +2,17 @@
   "permissions": {
     "allow": [
       "Bash(npm --version)",
-      "Bash(npx --yes create-next-app@latest . --js --tailwind --eslint --app --no-src-dir --import-alias \"@/*\" --use-npm --turbopack --yes)"
+      "Bash(npx --yes create-next-app@latest . --js --tailwind --eslint --app --no-src-dir --import-alias \"@/*\" --use-npm --turbopack --yes)",
+      "Bash(npm run *)",
+      "WebSearch",
+      "Bash(echo \"=== theme-color.css \\(palette\\) ===\"; grep -oE '#[0-9a-fA-F]{6}' /tmp/realshed-theme.css | sort | uniq -c | sort -rn | head -20; echo \"\"; echo \"=== main style color usage \\(top hexes\\) ===\"; grep -oE '#[0-9a-fA-F]{6}' /tmp/realshed-style.css | sort | uniq -c | sort -rn | head -25; echo \"\"; echo \"=== fonts ===\"; grep -oE 'font-family:[^;]+' /tmp/realshed-style.css | sort | uniq -c | sort -rn | head -10)",
+      "Read(//tmp/**)",
+      "Bash(grep -oE '<section[^>]*class=\"[^\"]*\"' /tmp/realshed.html | sed 's/.*class=\"//' | head -30; echo \"=== top-level nav structure ===\"; grep -oE 'class=\"[a-z-]*topbar[a-z-]*\"|class=\"[a-z-]*header[a-z-]*\"|class=\"[a-z-]*slider[a-z-]*\"|class=\"[a-z-]*banner[a-z-]*\"' /tmp/realshed.html | sort -u)",
+      "Bash(python3 -)",
+      "Bash(grep -n 'banner-section' /tmp/realshed.html | head -5; echo \"---\"; grep -n 'feature-section' /tmp/realshed.html | head -3; echo \"---\"; grep -n 'header-top' /tmp/realshed.html | head -3)",
+      "Bash(cygpath -w /tmp/realshed.html)",
+      "Bash(ls -la /tmp/ 2>/dev/null | grep -iE \"realshed|\\\\.html|\\\\.css\" ; ls \"C:/Users/ADOBO'S-PC/AppData/Local/Temp/\" 2>/dev/null | grep -iE \"realshed\" ; echo \"---project---\"; ls \"c:/Users/ADOBO'S-PC/Desktop/real_estate_project/public/images/\")",
+      "Read(//c/Users/ADOBO'S-PC/AppData/Local/Temp/**)"
     ]
   }
 }
