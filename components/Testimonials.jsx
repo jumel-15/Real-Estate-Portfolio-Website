@@ -33,11 +33,11 @@ export default function Testimonials() {
             role="region"
             aria-roledescription="carousel"
             aria-label="Client testimonials"
-            className="relative mx-auto mt-14 max-w-3xl"
+            className="relative mx-auto mt-14 max-w-3xl overflow-hidden"
           >
             {/* Slides */}
             <div
-              className="flex transition-transform duration-500 ease-out"
+              className="flex w-full transition-transform duration-500 ease-out"
               style={{ transform: `translateX(-${index * 100}%)` }}
             >
               {testimonials.map((t, i) => {
