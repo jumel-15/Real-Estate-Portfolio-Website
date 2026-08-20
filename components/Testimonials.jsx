@@ -37,7 +37,7 @@ export default function Testimonials() {
           >
             {/* Slides */}
             <div
-              className="flex w-full transition-transform duration-500 ease-out"
+              className="flex w-full max-w-full overflow-hidden transition-transform duration-500 ease-out"
               style={{ transform: `translateX(-${index * 100}%)` }}
             >
               {testimonials.map((t, i) => {
