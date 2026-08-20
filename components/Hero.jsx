@@ -38,7 +38,7 @@ export default function Hero() {
             <span aria-hidden="true" className="h-px w-9 bg-primary" />
             {site.tagline}
           </p>
-          <h1 className="mt-6 max-w-3xl text-[42px] font-semibold leading-[1.06] tracking-tight text-white sm:text-6xl lg:text-7xl">
+          <h1 className="mt-6 max-w-3xl text-balance text-[36px] font-semibold leading-[1.08] tracking-tight text-white sm:text-6xl lg:text-7xl">
             Find Your Dream Home
             <span className="text-primary-soft">.</span>
           </h1>

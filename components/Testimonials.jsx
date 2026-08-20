@@ -40,10 +40,13 @@ export default function Testimonials() {
               className="flex transition-transform duration-500 ease-out"
               style={{ transform: `translateX(-${index * 100}%)` }}
             >
-              {testimonials.map((t) => (
+              {testimonials.map((t, i) => {
+                const active = testimonials[index].name === t.name;
+                return (
                 <figure
                   key={t.name}
-                  aria-hidden={testimonials[index].name !== t.name}
+                  aria-hidden={!active}
+                  inert={!active}
                   className="flex w-full shrink-0 flex-col items-center px-1 text-center sm:px-6"
                 >
                   {/* Avatar with quote badge */}
@@ -81,7 +84,8 @@ export default function Testimonials() {
                     </span>
                   </figcaption>
                 </figure>
-              ))}
+                );
+              })}
             </div>
 
             {/* Prev / Next */}

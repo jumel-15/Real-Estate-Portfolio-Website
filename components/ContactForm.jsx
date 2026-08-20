@@ -30,6 +30,13 @@ export default function ContactForm() {
       setStatus("error");
       return;
     }
+    // Validate the email format (the form uses noValidate, so the browser
+    // won't enforce type="email" for us).
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim());
+    if (!emailOk) {
+      setStatus("error");
+      return;
+    }
     // In a real app you would POST `form` to your endpoint here.
     setSubmittedName(form.name.trim());
     setStatus("success");
@@ -134,7 +141,7 @@ export default function ContactForm() {
 
       {status === "error" && (
         <p role="alert" className="mt-5 rounded-lg bg-sale/10 px-4 py-3 text-sm text-sale">
-          Please fill in your name, email, and message before sending.
+          Please fill in your name, a valid email address, and a message before sending.
         </p>
       )}
 

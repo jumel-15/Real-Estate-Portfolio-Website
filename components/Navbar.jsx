@@ -144,8 +144,10 @@ export default function Navbar() {
       {/* Mobile menu panel */}
       <div
         id="mobile-menu"
-        className={`overflow-hidden border-b border-line bg-white transition-[max-height,opacity] duration-300 lg:hidden ${
-          menuOpen ? "max-h-[34rem] opacity-100" : "max-h-0 opacity-0"
+        className={`overflow-y-auto overscroll-contain border-b border-line bg-white transition-[max-height,opacity] duration-300 lg:hidden ${
+          menuOpen
+            ? "max-h-[calc(100dvh-4.5rem)] opacity-100"
+            : "max-h-0 opacity-0"
         }`}
       >
         <nav
