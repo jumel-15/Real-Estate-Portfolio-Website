@@ -161,7 +161,7 @@ Try tweaking a value and the entire site updates — utilities like `text-primar
 
 ## 🙌 Credits
 
-- **Designed & built by Jumel Fernandez** — the layout takes design cues from the [Realshed](https://azim.commonsupport.com/Realshed/index.html) real estate template.
+- **Designed & built by Jumel Fernandez**
 - All property names, people, testimonials, and prices are fictional.
 
 ## 📄 License
