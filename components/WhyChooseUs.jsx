@@ -24,10 +24,16 @@ const iconChip = {
  */
 export default function WhyChooseUs() {
   return (
-    <section id="why-choose" className="bg-white py-20 sm:py-28">
+    <section id="why-choose" className="bg-background py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
-        <div className="rounded-lg bg-primary-soft px-6 py-12 sm:px-12 sm:py-16">
-          <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
+        <div className="relative overflow-hidden rounded-lg bg-primary-soft px-6 py-12 sm:px-12 sm:py-16">
+          {/* Ambient glow */}
+          <div
+            aria-hidden="true"
+            className="blob right-[-8%] top-[-30%] h-[380px] w-[380px] bg-accent/40"
+          />
+
+          <div className="relative flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
             <SectionHeading
               align="left"
               eyebrow="Why Choose Us?"
@@ -48,7 +54,7 @@ export default function WhyChooseUs() {
                 <Reveal key={item.title} delay={index * 100} className="h-full">
                   <div className="flex h-full flex-col items-center px-0 text-center md:px-8">
                     <span
-                      className={`flex h-16 w-16 items-center justify-center rounded-full ${iconChip[item.color]}`}
+                      className={`flex h-16 w-16 items-center justify-center rounded-full transition-transform duration-300 hover:scale-110 ${iconChip[item.color]}`}
                     >
                       <Icon className="h-7 w-7" aria-hidden="true" />
                     </span>
@@ -69,8 +75,8 @@ export default function WhyChooseUs() {
         <div className="mt-10 grid grid-cols-2 gap-5 lg:grid-cols-4">
           {whyChooseStats.map(([value, label], index) => (
             <Reveal key={label} delay={index * 80}>
-              <div className="rounded-lg border border-line bg-white p-6 text-center transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-[0_15px_40px_rgba(45,190,108,0.15)] sm:p-7">
-                <p className="text-[32px] font-semibold text-primary">{value}</p>
+              <div className="rounded-lg border border-line bg-white p-6 text-center transition-all duration-300 hover:-translate-y-1 hover:border-primary/50 hover:shadow-[0_15px_40px_rgba(47,113,128,0.2)] sm:p-7">
+                <p className="text-[32px] font-semibold text-primary-ink">{value}</p>
                 <p className="mt-1 text-xs font-medium uppercase tracking-[0.15em] text-muted">
                   {label}
                 </p>

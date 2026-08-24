@@ -15,21 +15,26 @@ const socialLinks = [
  */
 export default function Footer() {
   return (
-    <footer className="bg-navy text-white" id="footer">
-      <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8">
+    <footer className="relative overflow-hidden bg-navy text-white" id="footer">
+      {/* Soft glow accent at the top edge */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-linear-to-b from-primary/15 to-transparent"
+      />
+      <div className="relative mx-auto max-w-7xl px-5 py-16 sm:px-8">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           {/* Brand */}
           <div className="lg:col-span-2">
             <a href="#home" className="inline-flex items-center gap-2.5" aria-label={`${site.name} — back to top`}>
               <span
                 aria-hidden="true"
-                className="flex h-9 w-9 items-center justify-center rounded-md bg-primary text-sm font-bold text-white"
+                className="flex h-9 w-9 items-center justify-center rounded-md bg-charcoal text-sm font-bold text-white"
               >
                 A
               </span>
               <span className="flex flex-col leading-none">
                 <span className="text-lg font-semibold tracking-tight">Emilia</span>
-                <span className="text-[0.6rem] font-semibold uppercase tracking-[0.35em] text-primary">
+                <span className="text-[0.6rem] font-semibold uppercase tracking-[0.35em] text-primary-soft">
                   Estates
                 </span>
               </span>
@@ -55,7 +60,7 @@ export default function Footer() {
 
           {/* Quick links */}
           <nav aria-label="Footer">
-            <h3 className="text-xs font-semibold uppercase tracking-[0.3em] text-primary">
+            <h3 className="text-xs font-semibold uppercase tracking-[0.3em] text-primary-soft">
               Explore
             </h3>
             <ul className="mt-5 space-y-3">
@@ -63,7 +68,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    className="text-sm text-white/70 transition-colors hover:text-primary"
+                    className="text-sm text-white/70 transition-colors hover:text-primary-soft"
                   >
                     {link.label}
                   </a>
@@ -74,23 +79,23 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h3 className="text-xs font-semibold uppercase tracking-[0.3em] text-primary">
+            <h3 className="text-xs font-semibold uppercase tracking-[0.3em] text-primary-soft">
               Contact
             </h3>
             <ul className="mt-5 space-y-4 text-sm text-white/70">
               <li className="flex items-start gap-3">
-                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary-soft" aria-hidden="true" />
                 {site.address}
               </li>
               <li>
-                <a href={site.phoneHref} className="flex items-center gap-3 transition-colors hover:text-primary">
-                  <Phone className="h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
+                <a href={site.phoneHref} className="flex items-center gap-3 transition-colors hover:text-primary-soft">
+                  <Phone className="h-4 w-4 shrink-0 text-primary-soft" aria-hidden="true" />
                   {site.phone}
                 </a>
               </li>
               <li>
-                <a href={`mailto:${site.email}`} className="flex items-center gap-3 transition-colors hover:text-primary">
-                  <Mail className="h-4 w-4 shrink-0 text-primary" aria-hidden="true" />
+                <a href={`mailto:${site.email}`} className="flex items-center gap-3 transition-colors hover:text-primary-soft">
+                  <Mail className="h-4 w-4 shrink-0 text-primary-soft" aria-hidden="true" />
                   {site.email}
                 </a>
               </li>
@@ -110,10 +115,10 @@ export default function Footer() {
             </span>
           </p>
           <p className="flex gap-6">
-            <a href="#home" className="transition-colors hover:text-primary">
+            <a href="#home" className="transition-colors hover:text-primary-soft">
               Privacy Policy
             </a>
-            <a href="#home" className="transition-colors hover:text-primary">
+            <a href="#home" className="transition-colors hover:text-primary-soft">
               Terms of Service
             </a>
           </p>

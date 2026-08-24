@@ -12,12 +12,14 @@ import { useEffect, useRef, useState } from "react";
  *   - className   : extra classes merged onto the wrapper element
  *   - delay       : transition delay in ms, useful for staggering grids
  *   - as          : wrapper element tag (defaults to "div")
+ *   - variant     : "up" (default), "left", "right", or "scale"
  */
 export default function Reveal({
   children,
   className = "",
   delay = 0,
   as: Tag = "div",
+  variant = "up",
 }) {
   const ref = useRef(null);
   const [visible, setVisible] = useState(false);
@@ -47,10 +49,17 @@ export default function Reveal({
     return () => observer.disconnect();
   }, []);
 
+  const variantClass = {
+    up: "",
+    left: "reveal-left",
+    right: "reveal-right",
+    scale: "reveal-scale",
+  }[variant];
+
   return (
     <Tag
       ref={ref}
-      className={`reveal ${visible ? "is-visible" : ""} ${className}`}
+      className={`reveal ${variantClass} ${visible ? "is-visible" : ""} ${className}`}
       style={delay ? { transitionDelay: `${delay}ms` } : undefined}
     >
       {children}

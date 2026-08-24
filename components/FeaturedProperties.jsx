@@ -2,6 +2,7 @@ import { properties } from "./data";
 import PropertyCard from "./PropertyCard";
 import SectionHeading from "./SectionHeading";
 import Reveal from "./Reveal";
+import SwipeCarousel from "./SwipeCarousel";
 
 /**
  * FeaturedProperties
@@ -10,7 +11,7 @@ import Reveal from "./Reveal";
  */
 export default function FeaturedProperties() {
   return (
-    <section id="properties" className="bg-white py-20 sm:py-28">
+    <section id="properties" className="bg-background py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <SectionHeading
           eyebrow="Featured Properties"
@@ -18,11 +19,19 @@ export default function FeaturedProperties() {
           description="A hand-picked selection from our current portfolio — each home is a statement of design, comfort, and location."
         />
 
-        <div className="mt-14 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <SwipeCarousel
+          ariaLabel="Featured properties"
+          className="mt-14 md:grid md:grid-cols-2 md:gap-8 lg:grid-cols-3"
+        >
           {properties.map((property, index) => (
-            <PropertyCard key={property.id} property={property} delay={index * 120} />
+            <PropertyCard
+              key={property.id}
+              property={property}
+              delay={index * 120}
+              className="min-w-[85%] snap-start sm:min-w-[60%] md:min-w-0"
+            />
           ))}
-        </div>
+        </SwipeCarousel>
 
         <Reveal className="mt-12 text-center">
           <a href="#contact" className="btn-outline px-10">

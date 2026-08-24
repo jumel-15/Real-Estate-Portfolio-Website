@@ -32,8 +32,12 @@ export default function Home() {
         <Agent />
 
         {/* Contact */}
-        <section id="contact" className="bg-white py-20 sm:py-28">
-          <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <section id="contact" className="relative overflow-hidden bg-background py-20 sm:py-28">
+          <div
+            aria-hidden="true"
+            className="blob right-[-10%] top-[-20%] h-[420px] w-[420px] bg-primary/15"
+          />
+          <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
             <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
               <div>
                 <SectionHeading

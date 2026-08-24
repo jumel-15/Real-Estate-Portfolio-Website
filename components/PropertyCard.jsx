@@ -11,10 +11,16 @@ import Reveal from "./Reveal";
  *   - property : one entry from the `properties` array in data.js
  *   - delay    : stagger delay (ms) for the reveal animation
  */
-export default function PropertyCard({ property, delay = 0 }) {
+export default function PropertyCard({ property, delay = 0, className = "" }) {
   return (
-    <Reveal delay={delay} className="h-full">
-      <article className="group flex h-full flex-col overflow-hidden rounded-[8px] bg-white shadow-[0_0_0_1px_var(--color-line)] transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_20px_50px_rgba(15,23,43,0.12)]">
+    <Reveal delay={delay} className={`h-full ${className}`}>
+      <article className="group relative flex h-full flex-col overflow-hidden rounded-[8px] bg-white shadow-[0_0_0_1px_var(--color-line)] transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_20px_50px_rgba(18,59,74,0.12)]">
+        {/* Top accent line that sweeps in on hover */}
+        <span
+          aria-hidden="true"
+          className="absolute inset-x-0 top-0 z-10 h-[3px] origin-left scale-x-0 bg-primary transition-transform duration-500 ease-out group-hover:scale-x-100"
+        />
+
         {/* Image */}
         <div className="relative aspect-[4/3] overflow-hidden">
           <Image
@@ -24,13 +30,13 @@ export default function PropertyCard({ property, delay = 0 }) {
             sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
             className="object-cover transition-transform duration-700 group-hover:scale-105"
           />
-          <span className="absolute left-4 top-4 rounded-[3px] bg-primary px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-white">
+          <span className="absolute left-4 top-4 rounded-[3px] bg-accent px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-charcoal">
             For Sale
           </span>
           <button
             type="button"
             aria-label={`Save ${property.name} to favourites`}
-            className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-ink shadow-sm backdrop-blur transition-all duration-300 hover:bg-primary hover:text-white"
+            className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-ink shadow-sm backdrop-blur transition-all duration-300 hover:scale-110 hover:bg-primary hover:text-white active:scale-95"
           >
             <Heart className="h-[18px] w-[18px]" />
           </button>
@@ -44,7 +50,7 @@ export default function PropertyCard({ property, delay = 0 }) {
           <p className="mt-1 text-[26px] font-semibold leading-tight text-ink">
             {property.price}
           </p>
-          <h3 className="mt-2 text-[19px] font-semibold text-ink transition-colors duration-300 group-hover:text-primary">
+          <h3 className="mt-2 text-[19px] font-semibold text-ink transition-colors duration-300 group-hover:text-primary-ink">
             {property.name}
           </h3>
           <p className="mt-2 flex items-center gap-1.5 text-[14px] text-muted">
@@ -76,7 +82,7 @@ export default function PropertyCard({ property, delay = 0 }) {
             className="btn-primary mt-6 w-full px-6 py-3 text-[14px]"
           >
             See Details
-            <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />
           </a>
         </div>
       </article>

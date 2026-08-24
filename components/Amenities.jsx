@@ -20,8 +20,12 @@ const iconMap = {
  */
 export default function Amenities() {
   return (
-    <section id="amenities" className="bg-white py-20 sm:py-28">
-      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+    <section id="amenities" className="relative overflow-hidden bg-background py-20 sm:py-28">
+      <div
+        aria-hidden="true"
+        className="bg-dots absolute inset-0 [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,black,transparent)]"
+      />
+      <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <SectionHeading
           eyebrow="Amenities"
           title="Everything You Need, Steps Away"
@@ -37,8 +41,8 @@ export default function Amenities() {
                 delay={index * 80}
                 className="h-full"
               >
-                <div className="group flex h-full items-start gap-5 rounded-lg border border-line bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-[0_15px_40px_rgba(45,190,108,0.15)]">
-                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-md bg-primary-soft text-primary transition-colors duration-300 group-hover:bg-primary group-hover:text-white">
+                <div className="group flex h-full items-start gap-5 rounded-lg border border-line bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary/50 hover:shadow-[0_15px_40px_rgba(47,113,128,0.2)]">
+                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-md bg-primary-soft text-primary transition-all duration-300 group-hover:-rotate-3 group-hover:scale-110 group-hover:bg-primary group-hover:text-white">
                     <Icon className="h-6 w-6" aria-hidden="true" />
                   </span>
                   <div>

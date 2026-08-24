@@ -11,7 +11,7 @@ import SectionHeading from "./SectionHeading";
  */
 export default function Location() {
   return (
-    <section id="location" className="bg-white py-20 sm:py-28">
+    <section id="location" className="bg-background py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <SectionHeading
           eyebrow="Prime Location"
@@ -21,14 +21,14 @@ export default function Location() {
 
         <div className="mt-14 grid gap-8 lg:grid-cols-5">
           {/* Map placeholder */}
-          <Reveal className="lg:col-span-3">
-            <div className="relative aspect-16/10 overflow-hidden rounded-lg shadow-[0_20px_50px_rgba(15,23,43,0.12)]">
+          <Reveal variant="left" className="lg:col-span-3">
+            <div className="group relative aspect-16/10 overflow-hidden rounded-lg shadow-[0_20px_50px_rgba(18,59,74,0.12)]">
               <Image
                 src="/images/map.svg"
                 alt="Stylized map showing the property location near the marina"
                 fill
                 sizes="(max-width: 1024px) 100vw, 60vw"
-                className="object-cover"
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <span className="absolute bottom-4 left-4 rounded-[3px] bg-navy/80 px-4 py-1.5 text-xs font-medium text-white backdrop-blur">
                 {site.address}
@@ -37,7 +37,7 @@ export default function Location() {
           </Reveal>
 
           {/* Nearby landmarks */}
-          <Reveal delay={120} className="lg:col-span-2">
+          <Reveal variant="right" delay={120} className="lg:col-span-2">
             <div className="flex h-full flex-col justify-center rounded-lg bg-white p-7 shadow-[0_0_0_1px_var(--color-line)] sm:p-9">
               <h3 className="text-2xl font-semibold text-ink">
                 Nearby Landmarks
@@ -46,7 +46,7 @@ export default function Location() {
                 {landmarks.map((landmark) => (
                   <li
                     key={landmark.label}
-                    className="flex items-center justify-between gap-4 py-3.5"
+                    className="group flex items-center justify-between gap-4 py-3.5 transition-transform duration-300 hover:translate-x-1.5"
                   >
                     <span className="flex items-center gap-3 text-sm font-medium text-ink">
                       <MapPin
@@ -55,7 +55,7 @@ export default function Location() {
                       />
                       {landmark.label}
                     </span>
-                    <span className="shrink-0 rounded-full bg-primary-soft px-3 py-1 text-xs font-medium text-primary">
+                    <span className="shrink-0 rounded-full bg-primary-soft px-3 py-1 text-xs font-medium text-primary-ink">
                       {landmark.detail}
                     </span>
                   </li>

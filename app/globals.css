@@ -6,23 +6,36 @@
 @import "tailwindcss";
 
 @theme {
-  /* --- Brand palette (inspired by the Realshed template) ----------------- */
-  /* Primary green accent */
-  --color-primary: #2dbe6c;
-  --color-primary-dark: #239f5b;
-  --color-primary-soft: #e5f8ed; /* light green section backgrounds */
+  /* --- Brand palette — Modern Coastal real estate ------------------------ */
+  /* Deep Ocean #123B4A · Ocean Blue #2F7180 · Pale Coastal Blue #DCECEF
+     Warm Sand #E8D9C3 · Coastal White #FAFAF7 · Muted Accent #C49A6C */
+
+  /* Primary page background (coastal white) */
+  --color-background: #fafaf7;
+
+  /* Ocean Blue — links, icons, borders, hovers, gradients */
+  --color-primary: #2f7180;
+  --color-primary-dark: #123b4a; /* Deep Ocean for strong hover fills */
+  --color-primary-ink: #1d5f6d; /* deepened ocean for accent TEXT (AA) */
+  --color-primary-soft: #dcecef; /* pale coastal blue surfaces / cards */
+
+  /* Warm Sand — secondary surfaces, dividers, badges, gold accents */
+  --color-accent: #e8d9c3;
+
+  /* Muted sand/gold premium accent (used sparingly) */
+  --color-gold: #c49a6c;
 
   /* Sale / badges */
   --color-sale: #f94c4c;
-  --color-star: #f2b241;
+  --color-star: #c49a6c;
 
-  /* Neutrals */
-  --color-ink: #2d2929; /* main body text */
-  --color-charcoal: #1b1d21; /* darkest / hover fills */
-  --color-navy: #0f172b; /* dark footer + CTA */
-  --color-muted: #93959e; /* secondary text */
-  --color-line: #e5e7ec; /* borders & dividers */
-  --color-soft: #f7f9fc; /* light section backgrounds */
+  /* Neutrals (text stays dark for readability on the light palette) */
+  --color-ink: #123b4a; /* headings / body — Deep Ocean */
+  --color-charcoal: #123b4a; /* darkest fills + text on primary */
+  --color-navy: #123b4a; /* dark footer + utility bar */
+  --color-muted: #4d6067; /* secondary text */
+  --color-line: #d3e3e6; /* borders & dividers */
+  --color-soft: #fafaf7; /* light section backgrounds */
 
   /* --- Typography -------------------------------------------------------- */
   --font-sans: var(--font-rubik), ui-sans-serif, system-ui, -apple-system,
@@ -40,14 +53,21 @@ html {
 }
 
 body {
-  @apply bg-white font-sans text-ink antialiased;
+  @apply bg-background font-sans text-ink antialiased;
 }
 
 /* Offset anchored sections by the height of the sticky header
-   (utility bar + nav on desktop) */
+   (utility bar + nav on desktop, nav only on mobile) */
 section[id],
 footer[id] {
-  scroll-margin-top: 7.5rem;
+  scroll-margin-top: 5rem;
+}
+
+@media (min-width: 1024px) {
+  section[id],
+  footer[id] {
+    scroll-margin-top: 7.5rem;
+  }
 }
 
 ::selection {
@@ -65,10 +85,13 @@ footer[id] {
    Component classes
 --------------------------------------------------------------------------- */
 @layer components {
-  /* Primary green button with the dark "sweep" hover (Realshed theme-btn) */
+  /* Primary button — Deep Ocean fill, white text, sweeping to Ocean Blue on
+     hover (Realshed-style). */
   .btn-primary {
-    @apply relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-[5px] px-8 py-4 text-[17px] font-medium text-white shadow-[0_10px_30px_rgba(0,0,0,0.1)] transition-all duration-500;
-    background-color: var(--color-primary);
+    @apply relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-[5px] px-8 py-4 text-[17px] font-medium transition-all duration-500;
+    background-color: var(--color-charcoal);
+    color: #ffffff;
+    box-shadow: 0 10px 30px rgba(18, 59, 74, 0.18);
   }
 
   .btn-primary::before {
@@ -78,7 +101,7 @@ footer[id] {
     top: 0;
     height: 100%;
     width: 0%;
-    background-color: var(--color-charcoal);
+    background-color: var(--color-primary);
     transition: width 0.5s ease;
     z-index: -1;
   }
@@ -88,18 +111,22 @@ footer[id] {
   }
 
   .btn-primary:hover {
-    color: #ffffff;
     transform: translateY(-2px);
+    box-shadow: 0 16px 40px rgba(18, 59, 74, 0.24);
   }
 
-  /* Ghost button on light backgrounds */
+  /* Ghost button on light backgrounds — warm sand border, pale fill on hover */
   .btn-outline {
-    @apply inline-flex items-center justify-center gap-2 rounded-[5px] border border-line px-8 py-4 text-[17px] font-medium text-muted transition-colors duration-300 hover:border-charcoal hover:bg-charcoal hover:text-white;
+    @apply inline-flex items-center justify-center gap-2 rounded-[5px] border px-8 py-4 text-[17px] font-medium transition-all duration-300;
+    border-color: var(--color-accent);
+    color: var(--color-ink);
   }
 
-  /* White button for dark sections */
-  .btn-light {
-    @apply inline-flex items-center justify-center gap-2 rounded-[5px] bg-white px-8 py-4 text-[17px] font-medium text-charcoal shadow-[0_10px_30px_rgba(0,0,0,0.1)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-primary hover:text-white;
+  .btn-outline:hover {
+    border-color: var(--color-primary);
+    background-color: var(--color-primary-soft);
+    color: var(--color-primary-ink);
+    transform: translateY(-2px);
   }
 
   /* Ghost button on dark backgrounds */
@@ -107,9 +134,9 @@ footer[id] {
     @apply inline-flex items-center justify-center gap-2 rounded-[5px] border border-white/40 px-8 py-4 text-[17px] font-medium text-white transition-all duration-300 hover:border-white hover:bg-white hover:text-charcoal;
   }
 
-  /* Section kicker — green uppercase label above titles */
+  /* Section kicker — deepened ocean blue so the accent label stays readable */
   .kicker {
-    @apply text-[18px] font-medium uppercase leading-6 text-primary;
+    @apply text-[18px] font-medium uppercase leading-6 text-primary-ink;
   }
 
   /* Simple labeled form field */
@@ -130,7 +157,8 @@ footer[id] {
 /* ---------------------------------------------------------------------------
    Reveal-on-scroll animation
    Used by the <Reveal /> component: elements start hidden and fade + slide
-   in the first time they intersect the viewport.
+   in the first time they intersect the viewport. GPU-friendly (transform +
+   opacity only).
 --------------------------------------------------------------------------- */
 .reveal {
   opacity: 0;
@@ -146,21 +174,124 @@ footer[id] {
   transform: translateY(0);
 }
 
-/* Subtle pulsing scroll indicator on the hero */
-@keyframes scroll-hint {
+/* Directional / scale variants — combine with .reveal so both the base
+   transition and the target state apply. */
+.reveal.reveal-left {
+  transform: translateX(-36px);
+}
+
+.reveal.reveal-right {
+  transform: translateX(36px);
+}
+
+.reveal.reveal-scale {
+  transform: scale(0.96);
+}
+
+.reveal.is-visible.reveal-left,
+.reveal.is-visible.reveal-right,
+.reveal.is-visible.reveal-scale {
+  transform: none;
+}
+
+/* ---------------------------------------------------------------------------
+   Ambient background layers
+   Decorative, GPU-friendly motion used behind content. Everything respects
+   prefers-reduced-motion (see the block at the bottom of this file).
+--------------------------------------------------------------------------- */
+
+/* Soft blurred "aurora" blobs that drift very slowly behind sections */
+@keyframes blob-drift {
   0%,
   100% {
-    transform: translateY(0);
-    opacity: 0.9;
+    transform: translate(0, 0) scale(1);
   }
-  50% {
-    transform: translateY(8px);
-    opacity: 0.4;
+  33% {
+    transform: translate(28px, -36px) scale(1.07);
+  }
+  66% {
+    transform: translate(-24px, 24px) scale(0.94);
   }
 }
 
-.animate-scroll-hint {
-  animation: scroll-hint 2.2s ease-in-out infinite;
+.blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(70px);
+  pointer-events: none;
+  animation: blob-drift 18s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Gentle up/down float for decorative elements (cards, stat chips, icons) */
+@keyframes float-ambient {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+.animate-float {
+  animation: float-ambient 7s ease-in-out infinite;
+}
+
+/* Very slow scale/pan for full-bleed hero backgrounds (Ken Burns style) */
+@keyframes kenburns {
+  0%,
+  100% {
+    transform: scale(1.04) translate(0, 0);
+  }
+  50% {
+    transform: scale(1.1) translate(-1.5%, -1.5%);
+  }
+}
+
+.animate-kenburns {
+  animation: kenburns 28s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Faint dot field — warm sand for a soft premium accent */
+.bg-dots {
+  background-image: radial-gradient(rgba(196, 154, 108, 0.35) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+/* Subtle text shadow so hero copy stays readable over the photo */
+.text-shadow-hero {
+  text-shadow:
+    0 2px 24px rgba(18, 59, 74, 0.55),
+    0 1px 3px rgba(18, 59, 74, 0.4);
+}
+
+/* Hide the scrollbar on horizontal swipe carousels (mobile) while keeping
+   touch/keyboard scrolling fully functional */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* --- Entrance animation (hero content, load-triggered) ------------------- */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 /* ---------------------------------------------------------------------------
@@ -177,7 +308,10 @@ footer[id] {
     transition: none;
   }
 
-  .animate-scroll-hint {
+  .blob,
+  .animate-float,
+  .animate-kenburns,
+  .animate-fade-up {
     animation: none;
   }
 }

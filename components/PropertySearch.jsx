@@ -33,7 +33,7 @@ export default function PropertySearch({ className = "" }) {
 
   return (
     <div
-      className={`rounded-[10px] bg-white p-6 shadow-[0_30px_80px_rgba(15,23,43,0.25)] sm:p-8 ${className}`}
+      className={`rounded-[10px] bg-white p-6 shadow-[0_30px_80px_rgba(18,59,74,0.2)] sm:p-8 ${className}`}
     >
       {/* BUY / RENT tabs */}
       <div className="mb-6 flex gap-2 border-b border-line pb-px" role="tablist" aria-label="Property type">
@@ -46,7 +46,7 @@ export default function PropertySearch({ className = "" }) {
               aria-selected={active}
               onClick={() => setTab(t)}
               className={`relative px-5 pb-3 text-[16px] font-medium transition-colors duration-200 ${
-                active ? "text-primary" : "text-muted hover:text-ink"
+                active ? "text-primary-ink" : "text-muted hover:text-ink"
               }`}
             >
               {t}

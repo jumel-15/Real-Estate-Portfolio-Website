@@ -47,8 +47,8 @@ export const properties = [
     beds: 3,
     baths: 2,
     sqm: 214,
-    image: "/images/property-penthouse.svg",
-    alt: "Modern glass skyscraper at dusk with warm lit windows",
+    image: "/images/Skyline Penthouse.jpg",
+    alt: "Glass-fronted skyline penthouse at dusk with warm, glowing windows",
   },
   {
     id: "maplewood-villa",
@@ -58,7 +58,7 @@ export const properties = [
     beds: 5,
     baths: 4,
     sqm: 410,
-    image: "/images/property-villa.svg",
+    image: "/images/Maplewood Villa.jpg",
     alt: "Modern villa home glowing at evening with a landscaped lawn",
   },
   {
@@ -69,8 +69,8 @@ export const properties = [
     beds: 2,
     baths: 2,
     sqm: 128,
-    image: "/images/property-condo.svg",
-    alt: "Beachfront condominium beside the ocean with palm trees",
+    image: "/images/Azure Bay Condo.jpg",
+    alt: "Bright beachfront condominium with ocean views and palm trees",
   },
 ];
 
@@ -162,7 +162,7 @@ export const agents = [
     phone: "(555) 012-3456",
     phoneHref: "tel:+15550123456",
     email: "eleanor@emiliaestates.com",
-    image: "/images/agent.svg",
+    image: "/images/Eleanor Vance.jpg",
     alt: "Portrait of Eleanor Vance, senior real estate advisor",
   },
   {
@@ -171,7 +171,7 @@ export const agents = [
     phone: "(555) 012-7890",
     phoneHref: "tel:+15550127890",
     email: "marcus@emiliaestates.com",
-    image: "/images/agent-2.svg",
+    image: "/images/Marcus Reid.jpg",
     alt: "Portrait of Marcus Reid, luxury property specialist",
   },
   {
@@ -180,7 +180,7 @@ export const agents = [
     phone: "(555) 012-3451",
     phoneHref: "tel:+15550123451",
     email: "sofia@emiliaestates.com",
-    image: "/images/agent-3.svg",
+    image: "/images/Sofia Marchetti.jpg",
     alt: "Portrait of Sofia Marchetti, investment consultant",
   },
   {
@@ -189,7 +189,7 @@ export const agents = [
     phone: "(555) 012-4571",
     phoneHref: "tel:+15550124571",
     email: "david@emiliaestates.com",
-    image: "/images/agent-4.svg",
+    image: "/images/David Okafor.jpg",
     alt: "Portrait of David Okafor, waterfront and villa expert",
   },
 ];
